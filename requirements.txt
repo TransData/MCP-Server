@@ -3,3 +3,5 @@ langchain-openai
 fastapi
 langgraph
 python_dotenv
+langchain
+langchain_core

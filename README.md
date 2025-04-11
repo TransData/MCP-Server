@@ -1,6 +1,6 @@
 # LangChain MCP
 
-#### This repository explores the Modular Chain of Prompts (MCP) using LangChain. It includes two core components:
+#### This repository explores the Model context protocol (MCP) using LangChain. It includes two core components:
 
 ##### Twitter Server: Fetches and returns relevant tweets based on a user query.
 ##### ArXiv Server: Retrieves relevant research papers from ArXiv, summarizing content, authors, and more.

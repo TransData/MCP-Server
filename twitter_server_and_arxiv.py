@@ -23,7 +23,9 @@ async def search_arxiv(topic, max_results=15):
     """
     base_url = "http://export.arxiv.org/api/query?"
     query = f"search_query=all:{topic}&start=0&max_results={max_results}"
-    response = requests.get(base_url + query)
+    
+    async with httpx.AsyncClient() as client:
+        response = await client.get(base_url + query)
 
     if response.status_code != 200:
         raise Exception("Failed to fetch results from arXiv API.")

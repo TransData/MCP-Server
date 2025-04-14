@@ -93,23 +93,20 @@ async def scrap_twitter_for_social_mentions(query: str, token:str,max_results: i
     else:
         raise Exception("Failed to fetch tweets from Twitter API.")"""
     
-    BEARER_TOKEN = token
-    url = f"https://api.twitter.com/2/tweets/search/recent?query={query}&max_results={max_results}"
-    
-    headers = {"Authorization": f"Bearer {BEARER_TOKEN}"}
+    url = "https://plankton-app-ili4n.ondigitalocean.app/scrape_twitter"  # Update if using a different host/port
+
+    payload = {
+        "token": token,  # Replace with your Twitter API Bearer token for testing
+        "query": query,       # The search query, e.g., 'python'
+        "max_res": max_results             # Maximum number of tweets to retrieve
+    }
     
     async with httpx.AsyncClient() as client:
-        response = await client.get(url, headers=headers)
+        response = await client.get(url, json=payload)
 
     if response.status_code == 200:
-        try:
-            data = response.json()
-            tweet_data = "\n\n".join([f"ID: {tweet['id']}\nText: {tweet['text']}" 
-                                      for tweet in data.get('data', [])])
-            return tweet_data
-        except json.JSONDecodeError:
-            error_msg = "Error parsing JSON response"
-            return {"error": error_msg}
+        print(response.text)
+        return response.text
     else:
         error_msg = f"Error: {response.status_code}"
         return {"error": error_msg, "detail": response.text}

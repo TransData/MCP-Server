@@ -100,9 +100,11 @@ async def scrap_twitter_for_social_mentions(query: str, token:str,max_results: i
         "query": query,       # The search query, e.g., 'python'
         "max_res": max_results             # Maximum number of tweets to retrieve
     }
-    
+
+    headers={"Content-Type":"application/json"}
+
     async with httpx.AsyncClient() as client:
-        response = await client.get(url, json=payload)
+        response = await client.request("GET",url, json=payload, headers=headers)
 
     if response.status_code == 200:
         print(response.text)

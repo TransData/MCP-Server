@@ -93,7 +93,7 @@ async def scrap_twitter_for_social_mentions(query: str, token:str,max_results: i
     else:
         raise Exception("Failed to fetch tweets from Twitter API.")"""
     
-    url = "https://plankton-app-ili4n.ondigitalocean.app/scrape_twitter"  # Update if using a different host/port
+    url = "https://twitter-passthrough-2ebol.ondigitalocean.app/scrape_twitter"  # Update if using a different host/port
 
     payload = {
         "token": token,  # Replace with your Twitter API Bearer token for testing

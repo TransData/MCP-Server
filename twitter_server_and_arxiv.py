@@ -7,7 +7,7 @@ from langchain.prompts import ChatPromptTemplate
 from langchain_core.output_parsers import JsonOutputParser
 import httpx
 
-mcp = FastMCP("combined_server",port=8080)
+mcp = FastMCP("combined_server",port=8010)
 
 @mcp.tool()
 async def search_arxiv(topic, max_results=15):
